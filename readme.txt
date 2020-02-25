@@ -9,8 +9,8 @@ C
 C  This patch generates ancient Krell music based on Todd Barton's Krell patch.
 C  Please see https://vimeo.com/48466272
 C  
-C  Please see https://youtu.be/zzzzzzzzzzzzzzz for an example of the use of this
-C  vanilla Pure Data patch.
+C  Please see https://soundcloud.com/get-ready-man/patchkrell for an example 
+C  of the use of this vanilla Pure Data patch.
 C
 C----------------------------------------------------------------------------
 C  Requirements:   Pure Data <https://puredata.info/downloads/pure-data>
