@@ -1,0 +1,281 @@
+#N canvas 777 28 726 738 12;
+#X obj 64 623 loadbang;
+#X obj 64 663 print -n;
+#N canvas 0 50 597 388 copyrightInfo2020 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2020 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 128 663 pd copyrightInfo2020;
+#X floatatom 297 207 0 0 128 1 value - -;
+#X obj 279 244 ctlout 104 1;
+#X text 233 244 attack;
+#X obj 256 267 ctlout 105 1;
+#X text 217 267 decay;
+#X obj 287 146 bng 15 250 50 0 empty start empty 17 7 0 10 -262144
+-1 -1;
+#X obj 305 297 expr 0.0002*pow($f1 \, 3)+0.0626*pow($f1 \, 2)-0.9453*$f1
+;
+#X floatatom 291 397 7 0 0 0 - - -;
+#X obj 287 331 expr 0.0024*pow($f1 \, 3)+0.3297*pow($f1 \, 2)-2.6768*$f1
+;
+#X obj 305 353 t b f;
+#X obj 287 377 +;
+#X msg 64 643 patchKrell: Digitone Krell patch. Copyright (c) 2020
+Jerry Z Raski, f 67;
+#X obj 287 32 r endOfCycle;
+#X obj 326 56 bng 30 250 50 0 reset go Go -22 7 0 10 -204786 -1 -1
+;
+#X obj 326 109 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#N canvas 175 161 402 329 startStop 0;
+#X obj 229 162 outlet;
+#X text 127 53 start bang;
+#X obj 229 141 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 1
+1;
+#X obj 229 116 f 1;
+#X obj 258 116 f 0;
+#X obj 201 54 inlet;
+#X obj 201 73 f 0;
+#X obj 201 92 + 1;
+#X obj 229 94 sel 0 1;
+#X obj 237 72 mod 2;
+#N canvas 798 113 632 468 copyrightInfo2020 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2020 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 46 234 pd copyrightInfo2020;
+#X obj 154 122 s start;
+#X text 29 163 toggle start and stops bangs;
+#X text 94 122 1st bang;
+#X connect 2 0 0 0;
+#X connect 3 0 2 0;
+#X connect 4 0 2 0;
+#X connect 5 0 6 0;
+#X connect 6 0 7 0;
+#X connect 6 0 8 0;
+#X connect 7 0 9 0;
+#X connect 8 0 3 0;
+#X connect 8 0 11 0;
+#X connect 8 1 4 0;
+#X connect 9 0 6 1;
+#X restore 326 90 pd startStop;
+#X obj 287 127 spigot;
+#N canvas 0 50 450 300 susRelRev 0;
+#X obj 154 113 ctlout 106 1;
+#X obj 168 93 ctlout 107 1;
+#X msg 154 74 0;
+#X obj 131 143 ctlout 46 1;
+#X obj 115 162 ctlout 14 1;
+#X obj 154 52 inlet;
+#X text 245 113 no sustain or release;
+#X text 202 161 maximize reverb send;
+#N canvas 0 50 597 388 copyrightInfo2020 0;
+#X text 74 306 j.raski@gmail.com;
+#X text 43 19 This program creates generative music on an electronic
+synthesiser. Copyright (C) 2020 Jerry Z. Raski This program is free
+software: you can redistribute it and/or modify it under the terms
+of the GNU General Public License as published by the Free Software
+Foundation \, either version 3 of the License \, or (at your option)
+any later version. This program is distributed in the hope that it
+will be useful \, but WITHOUT ANY WARRANTY \; without even the implied
+warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See
+the GNU General Public License for more details. You should have received
+a copy of the GNU General Public License along with this program. If
+not \, see <https://www.gnu.org/licenses/>.;
+#X restore 41 253 pd copyrightInfo2020;
+#X msg 115 123 127;
+#X connect 2 0 0 0;
+#X connect 2 0 1 0;
+#X connect 5 0 2 0;
+#X connect 5 0 9 0;
+#X connect 9 0 3 0;
+#X connect 9 0 4 0;
+#X restore 293 166 pd susRelRev;
+#X text 275 663 based on Todd Barton’s Krell patch;
+#X text 331 676 https://vimeo.com/48466272;
+#N canvas 294 205 1319 385 cruft 0;
+#X msg 85 70 0;
+#X obj 85 50 loadbang;
+#X msg 85 70 0;
+#X obj 85 50 loadbang;
+#X obj 31 122 array set aScale;
+#X msg 31 90 0 2 4 5 7 9 11 12 14 16 17 19 21 23 24 26 28 29 31 33
+35 36 38 40 41 43 45 47 48 50 52 53 55 57 59 60;
+#X floatatom 550 74 0 0 0 0 - - -;
+#X obj 630 298 s endOfCycle;
+#X obj 577 54 abs;
+#X obj 577 320 noteout 1;
+#X text 448 35 pitch attenuverter;
+#X floatatom 544 114 3 0 0 0 - - -;
+#X obj 577 93 i;
+#X obj 613 161 loadbang;
+#X msg 613 180 100;
+#X obj 577 201 makenote;
+#X obj 577 73 / 2;
+#X obj 501 258 print vel;
+#X obj 630 241 timer;
+#X obj 630 221 sel 100 0;
+#X obj 501 296 print time;
+#X obj 630 260 t b;
+#X obj 501 221 print note;
+#X obj 630 279 delay 8;
+#X obj 577 112 tabread aScale;
+#X floatatom 547 155 3 0 0 0 - - -;
+#X obj 577 132 + 33;
+#X obj 578 35 - 127;
+#X obj 160 65 array define -k aScale 35;
+#A 0 0 2 4 5 7 9 11 12 14 16 17 19 21 23 24 26 28 29 31 33 35 36 38
+40 41 43 45 47 48 50 52 53 55 57 59;
+#X obj 41 248 print vel;
+#X obj 42 269 print time;
+#X obj 41 227 print note;
+#X floatatom 949 113 0 0 0 0 - - -;
+#X obj 1029 268 s endOfCycle;
+#X obj 976 93 abs;
+#X obj 976 290 noteout 1;
+#X text 846 73 pitch attenuverter;
+#X floatatom 951 171 3 0 0 0 - - -;
+#X obj 976 150 i;
+#X obj 1012 131 loadbang;
+#X msg 1012 150 100;
+#X obj 976 171 makenote;
+#X obj 976 112 / 2;
+#X obj 976 131 + 44;
+#X obj 1029 211 timer;
+#X obj 1029 191 sel 100 0;
+#X obj 1029 230 t b;
+#X text 1069 212 for debugging;
+#X obj 1029 249 delay 8;
+#X obj 976 74 - 127;
+#X obj 861 251 print vel;
+#X obj 862 272 print time;
+#X obj 861 230 print note;
+#X text 936 38 random notes;
+#X connect 0 0 4 1;
+#X connect 1 0 0 0;
+#X connect 1 0 5 0;
+#X connect 3 0 2 0;
+#X connect 5 0 4 0;
+#X connect 8 0 6 0;
+#X connect 8 0 16 0;
+#X connect 12 0 11 0;
+#X connect 12 0 24 0;
+#X connect 13 0 14 0;
+#X connect 14 0 15 1;
+#X connect 15 0 9 0;
+#X connect 15 0 22 0;
+#X connect 15 1 9 1;
+#X connect 15 1 19 0;
+#X connect 15 1 17 0;
+#X connect 16 0 12 0;
+#X connect 18 0 21 0;
+#X connect 18 0 20 0;
+#X connect 19 0 18 0;
+#X connect 19 1 18 1;
+#X connect 21 0 23 0;
+#X connect 23 0 7 0;
+#X connect 24 0 26 0;
+#X connect 26 0 15 0;
+#X connect 26 0 25 0;
+#X connect 27 0 8 0;
+#X connect 34 0 32 0;
+#X connect 34 0 42 0;
+#X connect 38 0 37 0;
+#X connect 38 0 41 0;
+#X connect 39 0 40 0;
+#X connect 40 0 41 1;
+#X connect 41 0 35 0;
+#X connect 41 0 52 0;
+#X connect 41 1 35 1;
+#X connect 41 1 45 0;
+#X connect 41 1 50 0;
+#X connect 42 0 43 0;
+#X connect 43 0 38 0;
+#X connect 44 0 46 0;
+#X connect 44 0 51 0;
+#X connect 45 0 44 0;
+#X connect 45 1 44 1;
+#X connect 46 0 48 0;
+#X connect 48 0 33 0;
+#X connect 49 0 34 0;
+#X restore 65 682 pd cruft;
+#X text 369 281 Digitone attack duration (ms);
+#X text 376 315 Digitone decay duration (ms);
+#X obj 287 186 random 96;
+#X floatatom 124 322 0 0 0 0 - - -;
+#X obj 204 516 s endOfCycle;
+#X obj 151 302 abs;
+#X obj 151 538 noteout 1;
+#X text 22 283 pitch attenuverter;
+#X floatatom 125 360 3 0 0 0 - - -;
+#X obj 151 340 i;
+#X obj 187 379 loadbang;
+#X msg 187 398 100;
+#X obj 151 419 makenote;
+#X obj 151 321 / 2;
+#X obj 204 459 timer;
+#X obj 204 439 sel 100 0;
+#X obj 204 478 t b;
+#X obj 204 497 delay 8;
+#X obj 151 359 tabread aScale;
+#X floatatom 127 398 3 0 0 0 - - -;
+#X obj 152 283 - 127;
+#X obj 151 379 + 24;
+#X connect 0 0 14 0;
+#X connect 8 0 20 0;
+#X connect 8 0 26 0;
+#X connect 9 0 12 0;
+#X connect 11 0 13 0;
+#X connect 12 0 13 0;
+#X connect 12 1 13 1;
+#X connect 13 0 10 0;
+#X connect 13 0 36 2;
+#X connect 14 0 1 0;
+#X connect 15 0 19 0;
+#X connect 16 0 18 0;
+#X connect 17 0 19 1;
+#X connect 18 0 17 0;
+#X connect 19 0 8 0;
+#X connect 26 0 3 0;
+#X connect 26 0 4 0;
+#X connect 26 0 6 0;
+#X connect 26 0 9 0;
+#X connect 26 0 11 0;
+#X connect 26 0 44 0;
+#X connect 29 0 27 0;
+#X connect 29 0 37 0;
+#X connect 33 0 32 0;
+#X connect 33 0 42 0;
+#X connect 34 0 35 0;
+#X connect 35 0 36 1;
+#X connect 36 0 30 0;
+#X connect 36 1 30 1;
+#X connect 36 1 39 0;
+#X connect 37 0 33 0;
+#X connect 38 0 40 0;
+#X connect 39 0 38 0;
+#X connect 39 1 38 1;
+#X connect 40 0 41 0;
+#X connect 41 0 28 0;
+#X connect 42 0 45 0;
+#X connect 44 0 29 0;
+#X connect 45 0 36 0;
+#X connect 45 0 43 0;
